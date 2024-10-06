@@ -11,8 +11,8 @@ const Header = () => {
           <Navbar.Brand>ProShop</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='ms-auto'>
+          <Navbar.Collapse id='basic-navbar-nav' style={{justifyContent:"end"}}>
+            <Nav >
              <LinkContainer to="/cart"  style={{color:"white", textDecoration:"none", margin:"5px"}}>
               <Link >
               <FaShoppingCart /> Cart </Link>
