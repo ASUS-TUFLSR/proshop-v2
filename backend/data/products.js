@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Airpods Wireless Bluetooth Headphones',
     image: '/images/airpods.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '2',
     name: 'iPhone 11 Pro 256GB Memory',
     image: '/images/phone.jpg',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Cannon EOS 80D DSLR Camera',
     image: '/images/camera.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Sony Playstation 4 Pro White Version',
     image: '/images/playstation.jpg',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '5',
     name: 'Logitech G-Series Gaming Mouse',
     image: '/images/mouse.jpg',
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: '6',
     name: 'Amazon Echo Dot 3rd Generation',
     image: '/images/alexa.jpg',
     description:
@@ -78,7 +72,6 @@ const products = [
     numReviews: 12,
   },
     {
-    _id: '7',
     name: 'Google Mini',
     image: '/images/googlemini.jpg',
     description:
@@ -91,7 +84,6 @@ const products = [
     numReviews: 8,
   },
     {
-    _id: '8',
     name: 'PlayStation Sony Ps5 Pulse 3D',
     image: '/images/PULSE3D.jpg',
     description:
@@ -104,7 +96,6 @@ const products = [
     numReviews: 10,
   },
     {
-    _id: '9',
     name: 'PlayStation 5',
     image: '/images/PS5.jpg',
     description:
@@ -117,7 +108,6 @@ const products = [
     numReviews: 6,
   },
     {
-    _id: '10',
     name: 'LG UltraGear Monitor',
     image: '/images/Monitor.jpg',
     description:
@@ -130,7 +120,6 @@ const products = [
     numReviews: 9,
   },
     {
-    _id: '11',
     name: 'Xbox-Special Diablo Edition',
     image: '/images/Xbox-specialEditionDiablo.jpg',
     description:
@@ -143,7 +132,6 @@ const products = [
     numReviews: 5,
   },
     {
-    _id: '12',
     name: 'Iphone 13 Pro 256GB',
     image: '/images/Iphone1.jpg',
     description:
