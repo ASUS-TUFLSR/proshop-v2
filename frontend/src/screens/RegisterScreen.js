@@ -9,8 +9,9 @@ import { setCredentials } from '../slices/authSlice'
 import { toast } from 'react-toastify'
 
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
 
+ const [name, setName] = useState('');   
  const [email, setEmail] = useState('');
  const [password, setPassword] = useState('');
 
@@ -81,4 +82,4 @@ const submitHandler = async (e) => {
   )
 }
 
-export default LoginScreen
+export default RegisterScreen
