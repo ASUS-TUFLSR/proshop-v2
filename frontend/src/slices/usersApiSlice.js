@@ -23,7 +23,21 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 method: 'POST'
             })
         }),
+        profile: builder.mutation({
+            query: (data) => {
+            const token = JSON.parse(localStorage.getItem('userInfo'))?.token; // Retrieve the token from userInfo in localStorage
+
+        return {
+            url: `${USERS_URL}/profile`,
+            method: 'PUT',
+            body: data,
+            headers: {
+                Authorization: `Bearer ${token}`, // Add the token here
+            },
+        };
+    },
+        }),
     }) 
 })
 
-export const {useLoginMutation, useLogoutMutation, useRegisterMutation} = usersApiSlice;
+export const {useLoginMutation, useLogoutMutation, useRegisterMutation, useProfileMutation} = usersApiSlice;
