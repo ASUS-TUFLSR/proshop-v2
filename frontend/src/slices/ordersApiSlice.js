@@ -29,12 +29,19 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
-     getMyOrders: builder.query({
-      query: () => ({
-        url: `${ORDERS_URL}/mine` || "/api/orders/mine",
-      }),
+    getMyOrders: builder.query({
+    query: () => {
+          const token = JSON.parse(localStorage.getItem('userInfo'))?.token; // Retrieve the token from localStorage
+
+          return {
+          url: "/api/orders/mine",
+          headers: {
+          Authorization: `Bearer ${token}`, // Add the token here
+         },
+        };
+       },
       keepUnusedDataFor: 5,
-    }),
+     }),
   }),
 });
 export const { useCreateOrderMutation, useGetOrderDetailsQuery, usePayOrderMutation, useGetPayPalClientIdQuery, useGetMyOrdersQuery } = orderApiSlice;
