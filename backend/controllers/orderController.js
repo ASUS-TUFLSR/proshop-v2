@@ -98,7 +98,18 @@ const updateOrderToPaid = asyncHandler(async (req, res)  => {
 // @access Private/Admin
 
 const updateOrderToDeliver = asyncHandler(async (req, res)  => {
-    res.send('update Order To Deliver')
+    
+ const order = await Order.findById(req.params.id);
+  if (order) {
+    order.isDelivered = true;
+    order.deliveredAt = Date.now();
+    const updatedOrder = await order.save();
+    res.json(updatedOrder);
+  } else {
+    res.status(404);
+    throw new Error('Order not found');
+  }
+
 }); 
 
 // @desc   get all orders
@@ -106,7 +117,9 @@ const updateOrderToDeliver = asyncHandler(async (req, res)  => {
 // @access Private/Admin
 
 const getOrders = asyncHandler(async (req, res)  => {
-    res.send('get all order')
+
+  const orders = await Order.find({}).populate('user', 'id name')
+  res.status(200).json(orders)
 }); 
 
 export {addOrderItems, getMyOrders, getOrderByID, updateOrderToPaid, updateOrderToDeliver, getOrders}
