@@ -1,23 +1,31 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Row, Col} from 'react-bootstrap'
-import { FaTimes, FaEdit, FaTrash } from 'react-icons/fa'
+import { FaEdit, FaTrash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import {useGetProductsQuery, useCreateProductMutation} from '../slices/productApiSlice'
+import {useGetProductsQuery, useCreateProductMutation, useDeleteProductMutation} from '../slices/productApiSlice'
 
 
 const ProductListScreen = () => {
 
     const { data: products, isLoading, error, refetch } = useGetProductsQuery();
-    // console.log(products)
 
     const [createProduct, {isLoading: loadingCreate}] = useCreateProductMutation();
-    console.log(createProduct)
 
-    const deleteHandler = (id) => {
-        
+    const [deleteProduct, {isLoading: loadingDelete}] = useDeleteProductMutation();
+
+    const deleteHandler = async (id) => {
+        if(window.confirm('Are you sure')){
+          try {
+            await deleteProduct(id);
+            refetch();
+            toast.success('Product Deleted')
+          } catch (err) {
+            toast.error(err?.data?.message || err.error);
+          }
+        }
     }
 
     const createProductHandler = async () => {
@@ -44,6 +52,7 @@ const ProductListScreen = () => {
           </Col>
         </Row>
         {loadingCreate && <Loader/>}
+        {loadingDelete && <Loader/>}
 
         {isLoading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> : (
             <>
