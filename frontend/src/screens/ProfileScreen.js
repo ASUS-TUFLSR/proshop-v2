@@ -54,12 +54,9 @@ const ProfileScreen = () => {
       dispatch(setCredentials({ ...res }));
       toast.success('Profile updated successfully');
     } catch (err) {
-      const errorMessage = err?.data?.message || err.error || 'Unauthorized. Please log in again.';
+      const errorMessage = err?.data?.message || err.error || 'Not authorized, no token';
       toast.error(errorMessage);
-
-      // Optional: Redirect to login if 401
-      if (err?.status === 401) {
-        // Optionally, redirect user to the login page
+      if (err?.status === 401 || 'Not authorized, no token') {
         navigate('/login');
       }
     }
@@ -119,8 +116,9 @@ const ProfileScreen = () => {
           <Loader />
         ) : error ? (
           <Message variant='danger'>
-            {error?.data?.message || error.error}
+            {error?.data?.message || error.error || 'Not authorized, no token'}
           </Message>
+          
         ) : (
           <Table striped table hover responsive className='table-sm'>
             <thead>
