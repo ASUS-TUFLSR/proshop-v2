@@ -1,22 +1,23 @@
 import React from 'react'
 import { useGetProductDetailsQuery } from '../slices/productApiSlice'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams, } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import {Row, Col, Image, ListGroup, Card, Button, Form} from 'react-bootstrap' 
 import Rating  from '../components/Rating'
 import Loader from '../components/Loader'
+import Meta from '../components/Meta'
 import Message from '../components/Message'
 import {addToCart} from '../slices/cartSlice'
 import { useCreateReviewMutation } from '../slices/productApiSlice'
 import {toast} from 'react-toastify'
+
 
 const ProductScreen = () => {
        
   const { id: productId } = useParams();
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [qty, setQty] = useState(1);
 
@@ -32,7 +33,6 @@ const ProductScreen = () => {
 
   const addToCartHandler = () => {
       dispatch(addToCart({ ...product, qty }))
-      //navigate('/cart');
   }
 
   const submitHandler = async (e) => {
@@ -62,6 +62,7 @@ const ProductScreen = () => {
       </>
       ) : error ? (<Message variant='danger'>{error?.data?.message || error.error}</Message>) : (<>
        <>
+        <Meta title={product.name}/>
        <Row>
             <Col md={5}>
             <Image src={product.image} alt={product.name} fluid />

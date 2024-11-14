@@ -14,16 +14,18 @@ const ProductCarousel = () => {
     <Carousel pause='hover' className='bg-dark mb-4'  >
       {products.map((product) => (
 
+         
         <Carousel.Item key={product._id} style={{textAlign:'center'}} >
-             <Carousel.Caption  >
-              <h2 className='text-white'>
+             
+                <Carousel.Caption style={{background:'none', top: '0px',color: '#fff',paddingBottom: '20px', paddingTop: '20px', textAlign: 'center',zIndex: '10',}} >
+              <h2 className='text-white' style={{fontSize:'1.4rem', padding:'.5rem 0',}}  >
                 {product.name} (${product.price})
               </h2>
             </Carousel.Caption>
           <Link to={`/product/${product._id}`}>
-            <Image src={product.image} alt={product.name} style={{width:'45%', margin:'5px'}} fluid />
-           
+            <Image src={product.image} alt={product.name} style={{width:'30%', margin:'5px',padding:'20px', borderRadius:'50%'}} fluid />
           </Link>
+     
         </Carousel.Item>
       ))}
     </Carousel>
